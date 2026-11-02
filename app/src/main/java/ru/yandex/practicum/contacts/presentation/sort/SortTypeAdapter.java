@@ -18,12 +18,13 @@ import java.util.function.Consumer;
 import ru.yandex.practicum.contacts.R;
 import ru.yandex.practicum.contacts.databinding.ItemSortBinding;
 import ru.yandex.practicum.contacts.presentation.sort.model.SortType;
+import ru.yandex.practicum.contacts.presentation.base.BaseListDiffCallback;
 
 public class SortTypeAdapter extends RecyclerView.Adapter<SortTypeAdapter.ViewHolder> {
 
     private final AsyncListDiffer<SortTypeUI> differ = new AsyncListDiffer<>(
             new AdapterListUpdateCallback(this),
-            new AsyncDifferConfig.Builder<>(new ListDiffCallback()).build()
+            new AsyncDifferConfig.Builder<>(new BaseListDiffCallback()).build()
     );
 
     private final Consumer<SortTypeUI> clickListener;
@@ -89,7 +90,7 @@ public class SortTypeAdapter extends RecyclerView.Adapter<SortTypeAdapter.ViewHo
         }
     }
 
-    static class ListDiffCallback extends DiffUtil.ItemCallback<SortTypeUI> {
+    /*static class ListDiffCallback extends DiffUtil.ItemCallback<SortTypeUI> {
 
         @Override
         public boolean areItemsTheSame(@NonNull SortTypeUI oldItem, @NonNull SortTypeUI newItem) {
@@ -106,5 +107,5 @@ public class SortTypeAdapter extends RecyclerView.Adapter<SortTypeAdapter.ViewHo
         public Object getChangePayload(@NonNull SortTypeUI oldItem, @NonNull SortTypeUI newItem) {
             return newItem;
         }
-    }
+    }*/
 }
